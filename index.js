@@ -2,6 +2,8 @@
 RESOURCES:
 https://www.youtube.com/watch?v=deXzu0Eregs
 
+https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe
+
 */
 
 const canvas = document.querySelector('canvas');
@@ -28,7 +30,7 @@ window.onload = () => {
         })
     document.querySelector("#stop").addEventListener("click", 
         () => {
-            
+            // cancelAnimationFrame(buildBoard);
         })
     document.querySelector("#random").addEventListener("click", 
         () => {
@@ -36,12 +38,6 @@ window.onload = () => {
             render(grid);
         })
 }
-
-
-
-
-
-
 
 // This function will build the game board 
 function buildBoard() {
