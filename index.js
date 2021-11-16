@@ -15,6 +15,34 @@ const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
 
 
+let grid = buildBoard();
+render(grid);
+
+
+// Randomize
+
+window.onload = () => {
+    document.querySelector("#start").addEventListener("click",
+        () => {
+            requestAnimationFrame(updateBoard);
+        })
+    document.querySelector("#stop").addEventListener("click", 
+        () => {
+            
+        })
+    document.querySelector("#random").addEventListener("click", 
+        () => {
+            grid = nextGeneration(grid);
+            render(grid);
+        })
+}
+
+
+
+
+
+
+
 // This function will build the game board 
 function buildBoard() {
     return new Array(COLUMNS).fill(null)
@@ -23,9 +51,6 @@ function buildBoard() {
             // Randomly generating random living cells
             .map(() => Math.floor(Math.random() * 2)));
 }
-
-let grid = buildBoard();
-requestAnimationFrame(updateBoard);
 
 // This function will update the board
 function updateBoard(){
