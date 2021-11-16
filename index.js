@@ -1,18 +1,24 @@
+/*
+RESOURCES:
+https://www.youtube.com/watch?v=deXzu0Eregs
+
+*/
+
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const resolution = 50;
+const resolution = 10;
 canvas.width = 500;
 canvas.height = 500;
 
-const COLS = canvas.width / resolution;
+const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
 
 
 // This function will build the game board 
 function buildBoard() {
-    return new Array(COLS).fill(null)
-        .map(() => new Array(ROWS).fill(0)
+    return new Array(COLUMNS).fill(null)
+        .map(() => new Array(ROWS).fill(null)
 
             // Randomly generating random living cells
             .map(() => Math.floor(Math.random() * 2)));
@@ -27,7 +33,6 @@ function updateBoard(){
     render(grid);
     requestAnimationFrame(updateBoard);
 }
-
 
 // This function will display the game board
 function render(grid) {
@@ -59,27 +64,26 @@ function nextGeneration(grid) {
             let count = 0;
             // Looping through the current cell's neighbors
             // With this nested for loop, we can visit the cells around the current cell.
-            for (let i = -1; i < 2; i++){
-                for (let j = -1; j < 2; j++){
+            for (let x = -1; x < 2; x++){
+                for (let y = -1; y < 2; y++){
 
                     // We do not want to count the current cell as a neighbor
-                    if (i === 0 && j === 0) {
+                    if (x === 0 && y === 0) {
                         continue;
                     }
                     // checking the edge cases:
-                    const x = col + i;
-                    const y = row + j;
+                    const xCell = col + x;
+                    const yCell = row + y;
 
-                    if (x >= 0 && y >= 0 && x < COLS && y < ROWS){
-                        const neighbor = grid[col +i][row =j];
+                    if (xCell >= 0 && yCell >= 0 && xCell < COLUMNS && yCell < ROWS){
+                        const neighbor = grid[col +x][row +y];
                         count += neighbor;
                     }
 
 
                 }
             }
-            // 1 2 4
-            
+            // Rules:
             // underpopulation rule:
             // if the current cell is alive and has less than 2 neighbors, kill cell in next gen
             if(cell === 1 && count < 2){
@@ -94,9 +98,13 @@ function nextGeneration(grid) {
             } else if  (cell === 0  && count === 3){
                 nextGen[col][row] = 1;
             } 
+
+            // Anything else means that the current cell has two or three neighbors
+            // Therefore, the current cell will live on to the next gen
             
         }
     }
+    return nextGen;
 }
 
 
