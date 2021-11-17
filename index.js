@@ -15,7 +15,7 @@ canvas.height = 500;
 
 const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
-
+var isPaused = false;
 
 let grid = buildBoard();
 render(grid);
@@ -26,15 +26,22 @@ render(grid);
 window.onload = () => {
     document.querySelector("#start").addEventListener("click",
         () => {
-            requestAnimationFrame(updateBoard);
+                var temp = requestAnimationFrame(updateBoard);
         })
     document.querySelector("#stop").addEventListener("click", 
         () => {
-            // cancelAnimationFrame(buildBoard);
+            cancelAnimationFrame(temp);
         })
-    document.querySelector("#random").addEventListener("click", 
+    document.querySelector("#nextGen").addEventListener("click", 
         () => {
             grid = nextGeneration(grid);
+            render(grid);
+        })
+    document.querySelector("#nexGen").addEventListener("click", 
+        () => {
+            for (var i = 0; i<23;i++) {
+                grid = nextGeneration(grid);
+            }
             render(grid);
         })
 }
