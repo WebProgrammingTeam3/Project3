@@ -30,9 +30,9 @@ window.onload = () => {
         })
     document.querySelector("#stop").addEventListener("click", 
         () => {
-            // cancelAnimationFrame(buildBoard);
+            cancelAnimationFrame(buildBoard);
         })
-    document.querySelector("#random").addEventListener("click", 
+    document.querySelector("#nextGen").addEventListener("click", 
         () => {
             grid = nextGeneration(grid);
             render(grid);
