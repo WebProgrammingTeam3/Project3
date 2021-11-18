@@ -9,59 +9,49 @@ https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const resolution = 10;
-canvas.width = 500;
-canvas.height = 500;
+var resolution = 10;
+canvas.width = 800;
+canvas.height = 800;
 
 const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
 var isPaused = false;
 
-
 var update = null;
 
+// Game Board display
 let grid = buildBoard();
 render(grid);
 
-// Sandbox for Buttons
 
-// const startButton = document.querySelector('#start');
-// const stopButton = document.querySelector('#stop');
-
-// var button = document.getElementById('start');
-
-// function start_button() {
-//     buttonrequestAnimationFrame(updateBoard);
-// }
-
-// function stop_button() {
-//     cancelAnimationFrame(update);
-// }
-
-// startButton.addEventListener('click', () => {
-//     start_button();
-// });
+// Board Size Logic
 
 
-// stopButton.addEventListener('click', () => {
-//     stop_button();
-// })
 
+// Button Logic
 window.onload = () => {
+
+    // Start Button
     document.querySelector("#start").addEventListener("click",
         () => {
-            var temp = requestAnimationFrame(updateBoard);
+            requestAnimationFrame(updateBoard);
         })
+
+    // Stop Button
     document.querySelector("#stop").addEventListener("click", 
         () => {
-            cancelAnimationFrame(temp);
+            location.reload();
         })
+
+    // Next Generation Button
     document.querySelector("#nextGen").addEventListener("click", 
         () => {
 
             grid = nextGeneration(grid);
             render(grid);
         })
+    
+    // Next 23 Gerneration Button
     document.querySelector("#nexGen").addEventListener("click", 
         () => {
             for (var i = 0; i<23;i++) {
@@ -69,12 +59,44 @@ window.onload = () => {
             }
             render(grid);
         })
+
+    // Random Button
     document.querySelector("#random").addEventListener("click", 
         () => {
 
             grid = buildBoard();
             render(grid);
         })
+
+    // Small Button
+    document.querySelector("#small").addEventListener("click",
+        () => {
+            resolution = 10;
+            canvas.width = 250;
+            canvas.height = 250;
+            grid = buildBoard();
+            render(grid);
+        })
+
+    // Medium Button 
+    document.querySelector("#medium").addEventListener("click",
+    () => {
+        resolution = 10;
+        canvas.width = 500;
+        canvas.height = 500;
+        grid = buildBoard();
+        render(grid);
+    })
+
+    // Large Button
+    document.querySelector("#large").addEventListener("click",
+    () => {
+        resolution = 10;
+        canvas.width = 800;
+        canvas.height = 800;
+        grid = buildBoard();
+        render(grid);
+    })
 }
 
 // This function will build the game board 
