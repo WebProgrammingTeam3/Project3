@@ -17,16 +17,40 @@ const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
 var isPaused = false;
 
+
+var update = null;
+
 let grid = buildBoard();
 render(grid);
 
+// Sandbox for Buttons
 
-// Randomize
+// const startButton = document.querySelector('#start');
+// const stopButton = document.querySelector('#stop');
+
+// var button = document.getElementById('start');
+
+// function start_button() {
+//     buttonrequestAnimationFrame(updateBoard);
+// }
+
+// function stop_button() {
+//     cancelAnimationFrame(update);
+// }
+
+// startButton.addEventListener('click', () => {
+//     start_button();
+// });
+
+
+// stopButton.addEventListener('click', () => {
+//     stop_button();
+// })
 
 window.onload = () => {
     document.querySelector("#start").addEventListener("click",
         () => {
-                var temp = requestAnimationFrame(updateBoard);
+            var temp = requestAnimationFrame(updateBoard);
         })
     document.querySelector("#stop").addEventListener("click", 
         () => {
@@ -34,6 +58,7 @@ window.onload = () => {
         })
     document.querySelector("#nextGen").addEventListener("click", 
         () => {
+
             grid = nextGeneration(grid);
             render(grid);
         })
@@ -42,6 +67,12 @@ window.onload = () => {
             for (var i = 0; i<23;i++) {
                 grid = nextGeneration(grid);
             }
+            render(grid);
+        })
+    document.querySelector("#random").addEventListener("click", 
+        () => {
+
+            grid = buildBoard();
             render(grid);
         })
 }
