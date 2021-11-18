@@ -9,97 +9,75 @@ https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-var resolution = 10;
-canvas.width = 800;
-canvas.height = 800;
+const resolution = 10;
+canvas.width = 500;
+canvas.height = 500;
 
 const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
 var isPaused = false;
 
+
 var update = null;
 
-// Game Board display
 let grid = buildBoard();
 render(grid);
 
+// Sandbox for Buttons
 
-// Board Size Logic
+// const startButton = document.querySelector('#start');
+// const stopButton = document.querySelector('#stop');
+
+// var button = document.getElementById('start');
+
+// function start_button() {
+//     buttonrequestAnimationFrame(updateBoard);
+// }
+
+// function stop_button() {
+//     cancelAnimationFrame(update);
+// }
+
+// startButton.addEventListener('click', () => {
+//     start_button();
+// });
 
 
+// stopButton.addEventListener('click', () => {
+//     stop_button();
+// })
 
-// Button Logic
 window.onload = () => {
-
-    // Start Button
     document.querySelector("#start").addEventListener("click",
         () => {
-            requestAnimationFrame(updateBoard);
+            var temp = requestAnimationFrame(updateBoard);
         })
-
-    // Stop Button
-    document.querySelector("#stop").addEventListener("click", 
+    document.querySelector("#stop").addEventListener("click",
         () => {
-            location.reload();
+            cancelAnimationFrame(temp);
         })
-
-    // Next Generation Button
-    document.querySelector("#nextGen").addEventListener("click", 
+    document.querySelector("#nextGen").addEventListener("click",
         () => {
 
             grid = nextGeneration(grid);
             render(grid);
         })
-    
-    // Next 23 Gerneration Button
-    document.querySelector("#nexGen").addEventListener("click", 
+    document.querySelector("#nexGen").addEventListener("click",
         () => {
             for (var i = 0; i<23;i++) {
                 grid = nextGeneration(grid);
             }
             render(grid);
         })
-
-    // Random Button
-    document.querySelector("#random").addEventListener("click", 
+    document.querySelector("#random").addEventListener("click",
         () => {
 
             grid = buildBoard();
             render(grid);
         })
-
-    // Small Button
-    document.querySelector("#small").addEventListener("click",
-        () => {
-            resolution = 10;
-            canvas.width = 250;
-            canvas.height = 250;
-            grid = buildBoard();
-            render(grid);
-        })
-
-    // Medium Button 
-    document.querySelector("#medium").addEventListener("click",
-    () => {
-        resolution = 10;
-        canvas.width = 500;
-        canvas.height = 500;
-        grid = buildBoard();
-        render(grid);
-    })
-
-    // Large Button
-    document.querySelector("#large").addEventListener("click",
-    () => {
-        resolution = 10;
-        canvas.width = 800;
-        canvas.height = 800;
-        grid = buildBoard();
-        render(grid);
-    })
 }
 
-// This function will build the game board 
+// This function will build the game board
 function buildBoard() {
     return new Array(COLUMNS).fill(null)
         .map(() => new Array(ROWS).fill(null)
@@ -170,23 +148,20 @@ function nextGeneration(grid) {
             if(cell === 1 && count < 2){
                 nextGen[col][row] = 0;
 
-            // overcrowding rule:
-            // if the current cell is alive and has more than 3 neighbors, kill cell in next gen
+                // overcrowding rule:
+                // if the current cell is alive and has more than 3 neighbors, kill cell in next gen
             } else if (cell === 1 && count > 3){
                 nextGen[col][row] = 0;
 
-            // Any live cell with two or three live neighbors’ lives on to the next gen
+                // Any live cell with two or three live neighbors’ lives on to the next gen
             } else if  (cell === 0  && count === 3){
                 nextGen[col][row] = 1;
-            } 
+            }
 
             // Anything else means that the current cell has two or three neighbors
             // Therefore, the current cell will live on to the next gen
-            
+
         }
     }
     return nextGen;
 }
-
-
-

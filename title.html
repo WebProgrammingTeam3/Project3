@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Title: Conway's Game of Life</title>
+</head>
+<body>
+<h1 align="center"> Conway's game of Life</h1>
+
+<h2> About the game </h2>
+<div class="box">
+<p>  The game starts with a 2-D grid that consists of cells in either an alive or dead state. The cells has eight cells that are in close contact with it. The game has what is called ticks that applies to each cell with these four rules:
+<ol>
+    <li> Any live cell with fewer than two live neighbors dies, as if caused by underpopulation.</li>
+    <li> Any live cell with more than three live neighbors dies, as if by overcrowding.</li>
+    <li> Any live cell with two or three live neighbors’ lives on to the next generation.</li>
+    <li> Any dead cell with exactly three live neighbors becomes a live cell.</li>
+</ol>
+<ol>
+    <u> Still Life</u>
+    <p> Still life is basically stable patterns that satin in one state don't change. They stop other patterns or keep unstable patterns stable.</p>
+    <li> The Block <img src="unknown.png" alt="zero" width="20" height="20"></li>
+    <li> The Bloat <img src="unknown%20(1).png" alt="one" width="20" height="20"></li>
+    <li> The Loaf <img src="unknown%20(2).png" alt="two" width="20" height="20"></li>
+    <li> The Beehive <img src="unknown%20(3).png" alt="three" width="20" height="20"></li>
+</ol>
+<ol>
+    <u> Oscillators</u>
+    <p> Oscillators are more complicated patterns,and will cause a chain of unstable patterns by bumping into other stable patterns </p>
+    <li>The Blinker <img src="unknown%20(4).png" alt="four" width="20" height="20"></li>
+    <li> The Beacon <img src="unknown%20(5).png" alt="five" width="20" height="20"></li>
+    <li> The Toad <img src="unknown%20(6).png" alt="six" width="20" height="20"></li>
+    <li> The Pulsar <img src="unknown%20(7).png" alt="seven" width="20" height="20"></li>
+</ol>
+
+<ol>
+    <u>Gliders and spaceships</u>
+    <p>The spaceship is a pattern that moves, returning to the same configuration but shifted after a finite number
+        of generations. The glider is an example of a simple spaceship and its generations each consist of five live
+        cells. The glider has a period of four and moves diagonally one cell every four generations. It moves at
+        one-quarter the speed of light</p>
+    <li> Gliders <img src="unknown%20(8).png" alt="eight" width="20" height="20"> </li>
+    <li> Spaceships <img src="unknown%20(9).png" alt="nine" width="20" height="20"> </li>
+</ol>
+<ol>
+    <u> Guns </u>
+    <p>Guns are repeating patterns which produce a spaceship after a finite number of generations. The simplest
+        gun, called the Gosper glider gun, produces a glider every 30 generations.</p>
+    <li> Guns <img src="unknown%20(11).png" alt="eleven" width="20" height="20"> </li>
+</ol>
+</p>
+</div>
+<div class = "bottom">
+    Contributors: Ryan Salter, Michael Hosein, Tomy Tran, Derek Yong
+    <p> Resources: <a href="https://www.youtube.com/watch?v=deXzu0Eregs">https://www.youtube.com/watch?v=deXzu0Eregs</a> <a href="https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe">https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe</a> </p>
+    <p> Summary: <a href=""></a></p>
+    <p> Github: <a href=""></a> </p>
+    <p> Youtube: <a href=""></a></p>
+</div>
+<form action="https://index.html">
+    <input type="submit" value="Start" />
+</form>
+</body>
+</html>
