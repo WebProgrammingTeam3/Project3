@@ -9,9 +9,9 @@ https://levelup.gitconnected.com/conways-game-of-life-in-javascript-9498ae1958fe
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-const resolution = 10;
-canvas.width = 500;
-canvas.height = 500;
+var resolution = 10;
+canvas.width = 600;
+canvas.height = 600;
 
 const COLUMNS = canvas.width / resolution;
 const ROWS = canvas.height / resolution;
@@ -79,8 +79,8 @@ window.onload = () => {
     document.querySelector("#small").addEventListener("click",
         () => {
             resolution = 10;
-            canvas.width = 250;
-            canvas.height = 250;
+            canvas.width = 200;
+            canvas.height = 200;
             grid = buildBoard();
             render(grid);
         })
@@ -89,8 +89,8 @@ window.onload = () => {
     document.querySelector("#medium").addEventListener("click",
     () => {
         resolution = 10;
-        canvas.width = 500;
-        canvas.height = 500;
+        canvas.width = 400;
+        canvas.height = 400;
         grid = buildBoard();
         render(grid);
     })
@@ -99,8 +99,8 @@ window.onload = () => {
     document.querySelector("#large").addEventListener("click",
     () => {
         resolution = 10;
-        canvas.width = 800;
-        canvas.height = 800;
+        canvas.width = 600;
+        canvas.height = 600;
         grid = buildBoard();
         render(grid);
     })
