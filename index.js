@@ -52,9 +52,9 @@ window.onload = () => {
         () => {
             var temp = requestAnimationFrame(updateBoard);
         })
-    document.querySelector("#stop").addEventListener("click",
+    document.querySelector("#stop").addEventListener("click", 
         () => {
-            cancelAnimationFrame(temp);
+            location.reload();
         })
     document.querySelector("#nextGen").addEventListener("click",
         () => {
@@ -75,6 +75,35 @@ window.onload = () => {
             grid = buildBoard();
             render(grid);
         })
+    // Small Button
+    document.querySelector("#small").addEventListener("click",
+        () => {
+            resolution = 10;
+            canvas.width = 250;
+            canvas.height = 250;
+            grid = buildBoard();
+            render(grid);
+        })
+
+    // Medium Button 
+    document.querySelector("#medium").addEventListener("click",
+    () => {
+        resolution = 10;
+        canvas.width = 500;
+        canvas.height = 500;
+        grid = buildBoard();
+        render(grid);
+    })
+
+    // Large Button
+    document.querySelector("#large").addEventListener("click",
+    () => {
+        resolution = 10;
+        canvas.width = 800;
+        canvas.height = 800;
+        grid = buildBoard();
+        render(grid);
+    })
 }
 
 // This function will build the game board
