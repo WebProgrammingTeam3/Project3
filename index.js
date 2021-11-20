@@ -104,6 +104,16 @@ window.onload = () => {
         grid = buildBoard();
         render(grid);
     })
+    document.querySelector("#lines").addEventListener("click",
+    () => {
+        grid = buildPattern1();
+        render(grid);
+    })
+    document.querySelector("#checkered").addEventListener("click",
+    () => {
+        grid = buildPattern2();
+        render(grid);
+    })
 }
 
 // This function will build the game board
@@ -113,6 +123,32 @@ function buildBoard() {
 
             // Randomly generating random living cells
             .map(() => Math.floor(Math.random() * 2)));
+}
+
+function buildPattern1() {
+    var i=0;
+    return new Array(COLUMNS).fill(null)
+        .map(() => new Array(ROWS).fill(null)
+
+            // Randomly generating random living cells
+            .map(() => ((i++)%2) ));
+}
+var j = 0;
+function buildPattern2() {
+    var i=0;
+    return new Array(COLUMNS).fill(null)
+        .map(() => new Array(ROWS).fill(null)
+
+            // Randomly generating random living cells
+            .map(() => pattern2(i++,j) ));
+}
+
+function pattern2(i,j) {
+    if(i%2==0) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 // This function will update the board
