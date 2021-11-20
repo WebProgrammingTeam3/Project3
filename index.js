@@ -104,13 +104,13 @@ window.onload = () => {
         grid = buildBoard();
         render(grid);
     })
-    document.querySelector("#glider").addEventListener("click",
+    document.querySelector("#pulsar").addEventListener("click",
     () => {
         grid = buildPattern1();
         render(grid);
         
     })
-    document.querySelector("#pulsar").addEventListener("click",
+    document.querySelector("#glider").addEventListener("click",
     () => {
         grid = buildPattern2();
         render(grid);
@@ -224,8 +224,6 @@ function buildPattern3() {
 return pattern;
 
 }
-
-
 
 function pattern2(i,j) {
     if(i%2==0) {
