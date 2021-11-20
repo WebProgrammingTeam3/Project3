@@ -104,14 +104,20 @@ window.onload = () => {
         grid = buildBoard();
         render(grid);
     })
-    document.querySelector("#lines").addEventListener("click",
+    document.querySelector("#glider").addEventListener("click",
     () => {
         grid = buildPattern1();
         render(grid);
+        
     })
-    document.querySelector("#checkered").addEventListener("click",
+    document.querySelector("#pulsar").addEventListener("click",
     () => {
         grid = buildPattern2();
+        render(grid);
+    })
+    document.querySelector("#block").addEventListener("click",
+    () => {
+        grid = buildPattern3();
         render(grid);
     })
 }
@@ -126,22 +132,100 @@ function buildBoard() {
 }
 
 function buildPattern1() {
-    var i=0;
-    return new Array(COLUMNS).fill(null)
-        .map(() => new Array(ROWS).fill(null)
+    let pattern = new Array(COLUMNS).fill(null)
+        .map(() => new Array(ROWS).fill(null));
 
-            // Randomly generating random living cells
-            .map(() => ((i++)%2) ));
+        pattern[8][20] = 1;
+        pattern[8][21] = 1;
+        pattern[8][22] = 1;
+        pattern[8][26] = 1;
+        pattern[8][27] = 1;
+        pattern[8][28] = 1;
+    
+        pattern[10][18] = 1;
+        pattern[10][23] = 1;
+        pattern[10][25] = 1;
+        pattern[10][30] = 1;
+    
+        pattern[11][18] = 1;
+        pattern[11][23] = 1;
+        pattern[11][25] = 1;
+        pattern[11][30] = 1;
+    
+        pattern[12][18] = 1;
+        pattern[12][23] = 1;
+        pattern[12][25] = 1;
+        pattern[12][30] = 1;
+    
+        pattern[13][20] = 1;
+        pattern[13][21] = 1;
+        pattern[13][22] = 1;
+        pattern[13][26] = 1;
+        pattern[13][27] = 1;
+        pattern[13][28] = 1;
+    
+        pattern[15][20] = 1;
+        pattern[15][21] = 1;
+        pattern[15][22] = 1;
+        pattern[15][26] = 1;
+        pattern[15][27] = 1;
+        pattern[15][28] = 1;
+    
+        pattern[16][18] = 1;
+        pattern[16][23] = 1;
+        pattern[16][25] = 1;
+        pattern[16][30] = 1;
+    
+        pattern[17][18] = 1;
+        pattern[17][23] = 1;
+        pattern[17][25] = 1;
+        pattern[17][30] = 1;
+    
+        pattern[18][18] = 1;
+        pattern[18][23] = 1;
+        pattern[18][25] = 1;
+        pattern[18][30] = 1;
+    
+        pattern[20][20] = 1;
+        pattern[20][21] = 1;
+        pattern[20][22] = 1;
+        pattern[20][26] = 1;
+        pattern[20][27] = 1;
+        pattern[20][28] = 1;
+
+    return pattern;
+
 }
-var j = 0;
+
 function buildPattern2() {
-    var i=0;
-    return new Array(COLUMNS).fill(null)
-        .map(() => new Array(ROWS).fill(null)
+    let pattern = new Array(COLUMNS).fill(null)
+    .map(() => new Array(ROWS).fill(null));
 
-            // Randomly generating random living cells
-            .map(() => pattern2(i++,j) ));
+    pattern[3][5] = 1;
+    pattern[4][3] = 1;
+    pattern[4][5] = 1;
+    pattern[5][4] = 1;
+    pattern[5][5] = 1;
+
+return pattern;
+
 }
+
+function buildPattern3() {
+    let pattern = new Array(COLUMNS).fill(null)
+    .map(() => new Array(ROWS).fill(null));
+
+    pattern[4][3] = 1;
+    pattern[3][3] = 1;
+    pattern[4][4] = 1;
+    pattern[3][4] = 1;
+
+
+return pattern;
+
+}
+
+
 
 function pattern2(i,j) {
     if(i%2==0) {
