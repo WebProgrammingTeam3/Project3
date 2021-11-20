@@ -225,13 +225,6 @@ return pattern;
 
 }
 
-function pattern2(i,j) {
-    if(i%2==0) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
 // This function will update the board
 function updateBoard(){
